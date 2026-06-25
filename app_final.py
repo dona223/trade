@@ -537,9 +537,11 @@ def generate_pdf_report(
 
     font_name = "Helvetica"
     font_candidates = [
+        (os.path.join(os.path.dirname(__file__), "fonts", "NotoSansKR-Regular.ttf"), "NotoSansKR"),
+        # 폴백용 OS별 경로도 같이 남겨두면 로컬 테스트 시 유용
         ("C:/Windows/Fonts/malgun.ttf",    "MalgunGothic"),
-        ("C:/Windows/Fonts/NanumGothic.ttf", "NanumGothic"),
-        ("C:/Windows/Fonts/gulim.ttc",     "Gulim"),
+        ("/System/Library/Fonts/Supplemental/AppleGothic.ttf", "AppleGothic"),  # Mac
+        ("/usr/share/fonts/truetype/nanum/NanumGothic.ttf", "NanumGothic"),     # Linux (nanum-fonts 패키지 설치 시)
     ]
     for font_path, name in font_candidates:
         if os.path.exists(font_path):
